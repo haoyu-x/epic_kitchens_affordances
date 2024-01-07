@@ -22,7 +22,7 @@ def visualize_points(image_path, text, visualization_points):
 
 
 image_path = './P03_EPIC_100_example/rgb/P03_101_frame_0000000626.jpg'
-label_path = './P03_EPIC_100_example/complex_EPIC_Aff/P03_101_frame_0000000626.pkl'
+label_path = './P03_EPIC_100_example/easy_EPIC_Aff/P03_101_frame_0000000626.pkl'
 
 import os
 label_2d_path = os.path.join(label_path)
