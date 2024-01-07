@@ -82,19 +82,19 @@ class Ego_Metric_training_dataset():
         for i in range(len(texts_data)):
             interaction_coordinates[texts_data[i]].append(points_data[i])
 
-        print("interaction_clusters", self.interaction_clusters)
+        #print("interaction_clusters", self.interaction_clusters)
 
         #Draw the hotspots of the clusters
         c = 0
         masks = np.zeros((len(self.interaction_clusters), self.height, self.width))
         for text in self.interaction_clusters: 
             if text in interaction_coordinates.keys():  
-                print(text)
+                #print(text)
 
                 prob_sum = np.zeros((self.width, self.height))
                 for j in range(len(interaction_coordinates[text])):
                     point = interaction_coordinates[text][j][0:2].astype(int)
-                    print(point)
+                    #print(point)
                     prob = np.zeros((self.width, self.height))
 
                     if (self.width - point[0]) > self.size // 2:
@@ -137,7 +137,7 @@ class Ego_Metric_training_dataset():
                 prob_sum[prob_sum < 0.25] = 0 #If prob_sum < 0.5, set it to 0
                 prob_sum[prob_sum >= 0.25] = 1 #If prob_sum >= 0.5, set it to 1
                 masks[c, :, :] = prob_sum
-                print("prob", prob_sum)
+                #print("prob", prob_sum)
 
             c += 1
         return masks
@@ -176,8 +176,8 @@ class Ego_Metric_training_dataset():
         masks = self.get_masks_from_pickle(data_2d)
         return img, masks
 
-image_path = '/home/haoyux/epic_kitchens_affordances/P03_EPIC_100_example/rgb/P03_101_frame_0000000626.jpg'
-label_path = '/home/haoyux/epic_kitchens_affordances/P03_EPIC_100_example/complex_EPIC_Aff/P03_101_frame_0000000626.pkl'
+image_path = './P03_EPIC_100_example/rgb/P03_101_frame_0000000626.jpg'
+label_path = './P03_EPIC_100_example/complex_EPIC_Aff/P03_101_frame_0000000626.pkl'
 
 
 import os
